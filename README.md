@@ -1,4 +1,4 @@
-# End-to-End Testing with Cypress for the Mouts TI QA Challenge by Guilherme Menezes
+# End-to-End Testing with Cypress
 
 ## Installation
 ```bash
