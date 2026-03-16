@@ -1,4 +1,5 @@
 import RegisterPage from '../../pages/RegisterPage'
+import { MESSAGES, ROUTES } from '../../support/constants'
 
 describe('Frontend | User Registration', () => {
   context('Registration with valid data', () => {
@@ -11,8 +12,8 @@ describe('Frontend | User Registration', () => {
         password: 'Password@123',
       })
       
-      cy.contains('Cadastro realizado com sucesso').should('be.visible')
-      cy.url().should('include', '/home')
+      cy.contains(MESSAGES.registerSuccess).should('be.visible')
+      cy.url().should('include', ROUTES.home)
     })
   })
 
@@ -24,16 +25,16 @@ describe('Frontend | User Registration', () => {
         password: 'anypassword',
       })
 
-      cy.contains('Este email já está sendo usado').should('be.visible')
+      cy.contains(MESSAGES.duplicateEmail).should('be.visible')
     })
 
     it('should display validation messages when required fields are empty', () => {
       RegisterPage.visit()
       RegisterPage.submit()
 
-      cy.contains('Nome é obrigatório').should('be.visible')
-      cy.contains('Email é obrigatório').should('be.visible')
-      cy.contains('Password é obrigatório').should('be.visible')
+      cy.contains(MESSAGES.requiredName).should('be.visible')
+      cy.contains(MESSAGES.requiredEmail).should('be.visible')
+      cy.contains(MESSAGES.requiredPassword).should('be.visible')
     })
   })
 })
